@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    //リレーション設定（１ユーザにつき複数の投稿を行う設定）
+    //ユーザー視点から見てみると「さまざまな投稿にいいねできるよね〜」
+    public function likedPosts(){
+        return $this->belongsToMany(Post::class);
+    }
 }
